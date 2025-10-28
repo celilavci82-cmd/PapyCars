@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>PapyCars — Premium Rent a Car</title>
+<meta name="description" content="PapyCars — Güvenilir, profesyonel araç kiralama. Hemen ara veya WhatsApp'tan bilgi al.">
+<style>
+:root{
+  --dark-1:#071017;
+  --dark-2:#0b1418;
+  --muted:#9fb0c1;
+  --accent:#ff7a22;
+  --accent-2:#ff5a00;
+  --gold:#c9a52f;
+  --wa:#25D366;
+  --call:#ef4444;
+  --glass: rgba(255,255,255,0.04);
+  --card-radius:14px;
+  --maxw:1200px;
+  --shadow-lg: 0 20px 50px rgba(2,6,23,0.7);
+  --shadow-sm: 0 8px 24px rgba(2,6,23,0.5);
+  --font: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+  --transition: 220ms cubic-bezier(.2,.9,.3,1);
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:var(--font);
+  background:linear-gradient(180deg,var(--dark-1),var(--dark-2));
+  color: #ecf6ff;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.45;
+}
+
+/* VIDEO BACKGROUND */
+#bgVideo{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;z-index:-3;pointer-events:none;filter:brightness(.36) contrast(.95) saturate(.9);}
+.bg-overlay{position:fixed;inset:0;background:linear-gradient(180deg,rgba(2,6,10,0.45),rgba(2,6,10,0.65));z-index:-2;}
+
+/* PAGE WRAPPER */
+.container{max-width:var(--maxw);margin:32px auto;padding:28px}
+
+/* HEADER */
+.header{display:flex;align-items:center;gap:16px}
+.brand-badge{
+  display:flex;gap:12px;align-items:center;background:linear-gradient(90deg,var(--accent),var(--accent-2));
+  padding:10px 14px;border-radius:12px;box-shadow:0 12px 30px rgba(255,122,34,0.12);color:#06121a;font-weight:900;
+}
+.brand-badge svg{height:36px;width:36px}
+.brand-title{display:flex;flex-direction:column}
+.brand-title h1{margin:0;font-size:20px}
+.brand-title small{color:var(--dark-2);font-weight:800}
+
+/* NAV */
+.nav{margin-left:auto;display:flex;gap:12px;align-items:center}
+.nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:10px;font-weight:800}
+.nav a.primary{background:rgba(255,255,255,0.04);color:#fff}
+
+/* HERO */
+.hero{display:flex;gap:22px;align-items:flex-start;margin-top:20px;padding:22px;border-radius:16px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));box-shadow:var(--shadow-lg);border:1px solid rgba(255,255,255,0.03)}
+.hero-left{flex:1}
+.eyebrow{color:var(--accent);font-weight:900;font-size:13px;letter-spacing:.6px}
+.hero h2{margin:8px 0 10px 0;font-size:30px}
+.hero p{margin:0;color:var(--muted)}
+.cta-row{margin-top:16px;display:flex;gap:12px;flex-wrap:wrap}
+.btn{padding:12px 14px;border-radius:12px;border:none;font-weight:900;cursor:pointer;transition:all var(--transition)}
+.btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#06121a}
+.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+
+/* search */
+.searchbar{margin-top:18px;display:flex;gap:10px}
+.searchbar input{flex:1;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);background:rgba(255,255,255,0.02);color:#fff;font-weight:800}
+.searchbar button{padding:0 14px;border-radius:12px;border:none;background:var(--gold);color:#06121a;font-weight:900}
+
+/* FEATURE BOXES */
+.features{margin-top:24px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:900px){.features{grid-template-columns:1fr}}
+.feature{
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius:12px;padding:14px;border:1px solid rgba(255,255,255,0.03);
+  display:flex;gap:12px;align-items:center;box-shadow:var(--shadow-sm);
+  transition:transform var(--transition), box-shadow var(--transition);
+}
+.feature:hover{transform:translateY(-6px);box-shadow:0 26px 60px rgba(2,6,23,0.6)}
+.feature .icon{width:48px;height:48px;border-radius:10px;background:linear-gradient(90deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;color:#06121a;font-weight:900}
+.feature h4{margin:0;font-size:15px}
+.feature p{margin:6px 0 0 0;color:var(--muted);font-size:13px}
+
+/* GRID (cars) */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}
+@media(max-width:980px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.grid{grid-template-columns:1fr}}
+
+/* CARD */
+.card{
+  border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.03);
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  display:flex;flex-direction:column;transition:transform .28s cubic-bezier(.2,.9,.3,1), box-shadow .28s;
+  box-shadow:0 18px 40px rgba(2,6,23,0.55);
+}
+.card:hover{transform:translateY(-10px);box-shadow:0 36px 90px rgba(2,6,23,0.7)}
+.card-top{position:relative}
+.badge{position:absolute;right:12px;top:12px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#06121a;padding:8px 10px;border-radius:10px;font-weight:900;box-shadow:0 8px 26px rgba(255,122,34,0.12)}
+.media{height:260px;background:#071018;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.card:hover .media img{transform:scale(1.05)}
+.body{padding:16px;display:flex;flex-direction:column;gap:10px;flex:1}
+.title{font-weight:900;font-size:16px;color:#fff}
+.meta{color:var(--muted);font-size:13px}
+.actions{display:flex;gap:10px;margin-top:auto;flex-wrap:wrap}
+.link-wa{background:var(--wa);color:#04121a;padding:10px 12px;border-radius:10px;font-weight:900;text-decoration:none}
+.link-call{background:var(--call);color:#fff;padding:10px 12px;border-radius:10px;font-weight:900;text-decoration:none}
+
+/* FOOTER */
+footer{margin-top:36px;padding:26px;border-top:1px solid rgba(255,255,255,0.03);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-info{display:flex;flex-direction:column;gap:6px;color:var(--muted)}
+.footer-links{display:flex;gap:12px;align-items:center}
+.footer-links a{color:var(--muted);text-decoration:none;font-weight:800}
+.footer-links a:hover{color:#fff}
+
+/* LEGAL */
+.legal{margin-top:18px;color:var(--muted);text-align:center}
+
+/* FIXED CTA */
+.fixed-call,.fixed-wa{position:fixed;bottom:20px;padding:12px 14px;border-radius:12px;font-weight:900;cursor:pointer;z-index:9999;box-shadow:0 18px 40px rgba(0,0,0,0.6);text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.fixed-call{left:18px;background:var(--call);color:#fff}
+.fixed-wa{right:18px;background:var(--wa);color:#04121a}
+@media(max-width:520px){.fixed-call{left:12px;padding:10px 12px}.fixed-wa{right:12px;padding:10px 12px}}
+
+/* subtle utilities */
+.muted{color:var(--muted)}
+.center{display:flex;align-items:center;justify-content:center}
+</style>
+</head>
+<body>
+<!-- Video background: place videos/bg.mp4 in project -->
+<video id="bgVideo" autoplay muted loop playsinline>
+  <source src="videos/bg.mp4" type="video/mp4">
+  <!-- fallback (no video) -->
+</video>
+<div class="bg-overlay" aria-hidden="true"></div>
+
+<div class="container" role="main" aria-label="PapyCars içerik">
+  <header class="header" role="banner">
+    <div class="brand-badge" aria-hidden="true">
+      <!-- small svg logo -->
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs><linearGradient id="lg" x1="0" x2="1"><stop offset="0" stop-color="#ff7a22"/><stop offset="1" stop-color="#ff5a00"/></linearGradient></defs>
+        <rect x="6" y="10" width="88" height="80" rx="14" fill="url(#lg)"/>
+        <path d="M28 62 L42 28 L54 62 L66 28" stroke="#06121a" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div style="display:flex;flex-direction:column;line-height:1">
+        <div style="font-weight:900;color:#06121a;font-size:16px">PapyCars</div>
+        <div style="font-size:12px;color:#06121a;font-weight:700">Rent a Car</div>
+      </div>
+    </div>
+
+    <div class="brand-title" aria-hidden="true">
+      <h1>PapyCars</h1>
+      <small class="muted">Profesyonel • Güvenilir • 7/24 Destek</small>
+    </div>
+
+    <nav class="nav" role="navigation" aria-label="Ana menü">
+      <a href="#araclar">Araçlar</a>
+      <a href="#hizmetler">Hizmetler</a>
+      <a href="#iletisim" class="primary">İletişim</a>
+    </nav>
+  </header>
+
+  <section class="hero" aria-labelledby="heroTitle">
+    <div class="hero-left">
+      <div class="eyebrow">Kiralama • Şeffaf Fiyatlar</div>
+      <h2 id="heroTitle">PapyCars ile konforlu ve güvenli yolculuklar</h2>
+      <p class="muted">Geniş filo, düzenli bakım, tüm araçlar kaskolu. Aşağıdaki araçlar filomuzun öne çıkanlarıdır.</p>
+
+      <div class="cta-row">
+        <a class="btn btn-primary btn-primary" href="tel:+905545672275">REZERVASYON İÇİN ARA</a>
+        <a class="btn btn-ghost" href="https://wa.me/905545672275" target="_blank" rel="noopener">WHATSAPP'TAN SOR</a>
+      </div>
+
+      <div class="searchbar" role="search">
+        <input id="search" placeholder="Araç ara (örn: CLIO, PASSAT, BMW...)" aria-label="Araç arama">
+        <button id="clear" title="sıfırla">SIFIRLA</button>
+      </div>
+
+      <div class="features" aria-hidden="false">
+        <div class="feature">
+          <div class="icon center" aria-hidden="true">🔧</div>
+          <div>
+            <h4>Bakımlar Düzenli</h4>
+            <p>Tüm araçlarımızın bakımı yetkili servislerde düzenli olarak yapılır.</p>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="icon center" aria-hidden="true">🛡️</div>
+          <div>
+            <h4>Kaskolu Araçlar</h4>
+            <p>Tüm araçlarımız full kaskolu olarak sunulmaktadır.</p>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="icon center" aria-hidden="true">✅</div>
+          <div>
+            <h4>Güvenli Sürüş</h4>
+            <p>Sürüş güvenliğine önem veriyoruz; kontroller önceden yapılır.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="hero-right" style="width:320px;min-width:200px">
+      <div style="background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.02);box-shadow:var(--shadow-sm)">
+        <div style="font-weight:900;color:var(--accent)">Hızlı Bilgi</div>
+        <div style="margin-top:10px;color:var(--muted)">Telefon: <strong>+90 554 567 22 75</strong></div>
+        <div style="margin-top:6px;color:var(--muted)">E-posta: <strong>info@papycars.example</strong></div>
+        <div style="margin-top:12px"><a class="btn btn-ghost" href="#iletisim">İletişim Bilgileri</a></div>
+      </div>
+    </aside>
+  </section>
+
+  <!-- CAR GRID -->
+  <section id="araclar" style="margin-top:24px">
+    <h3 style="margin:0 0 12px 0;font-size:18px">Filomuzdaki Araçlar</h3>
+    <div class="grid" id="grid" aria-live="polite"></div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="hizmetler" style="margin-top:36px">
+    <h3 style="margin:0 0 12px 0">Hizmetlerimiz</h3>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
+      <div style="background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)"><strong style="color:var(--accent)">Günlük / Haftalık</strong><div class="muted" style="margin-top:8px">Esnek dönem ve uygun fiyatlar.</div></div>
+      <div style="background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)"><strong style="color:var(--accent)">Kurumsal Filo</strong><div class="muted" style="margin-top:8px">Kurumsal çözümler.</div></div>
+      <div style="background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)"><strong style="color:var(--accent)">Havalimanı Transfer</strong><div class="muted" style="margin-top:8px">Zamanında transferler.</div></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="iletisim">
+    <div class="footer-info">
+      <div style="font-weight:900;font-size:16px">PapyCars</div>
+      <div class="muted">Telefon: <strong>+90 554 567 22 75</strong></div>
+      <div class="muted">E-posta: <strong>info@papycars.example</strong></div>
+      <div class="muted">Adres: <strong>Türkiye</strong></div>
+    </div>
+    <div class="footer-links">
+      <a href="hakkimizda.html">Hakkımızda</a>
+      <a href="kvkk.html">KVKK</a>
+      <a href="sozlesme.html">Sözleşme</a>
+      <a href="cookies.html">Çerez Politikası</a>
+    </div>
+  </footer>
+
+  <div class="legal">© PapyCars — Tüm hakları saklıdır.</div>
+</div>
+
+<!-- FIXED CTA -->
+<a class="fixed-call" href="tel:+905545672275">HEMEN ARA</a>
+<a class="fixed-wa" href="https://wa.me/905545672275" target="_blank" rel="noopener">WHATSAPP</a>
+
+<script>
+/* Data: filenames (use spaces encoded as %20) */
+const cars = [
+  {id:'clio', name:'RENAULT CİLO', img:'araba/clio.png', price:850},
+  {id:'egea', name:'FİAT EGEA', img:'araba/egea.png', price:900},
+  {id:'megane', name:'RENAULT MEGANE', img:'araba/megane.png', price:950},
+  {id:'focus', name:'FORD FOCUS', img:'araba/fordfocus.png', price:1000},
+  {id:'octavia', name:'SKODA OCTAVİA', img:'araba/octavia.png', price:1000},
+  {id:'passat', name:'PASSAT', img:'araba/passat.png', price:1100},
+  {id:'superb', name:'SKODA SUPERB', img:'araba/suber b.png', price:1200},
+  {id:'peugeot3008', name:'PEUGEOT 3008', img:'araba/peuget3008.png', price:1100},
+  {id:'omoda5', name:'CHERRY OMODA 5', img:'araba/omoda 5.png', price:1100},
+  {id:'audia3', name:'AUDİ A3', img:'araba/audia3.png', price:1250},
+  {id:'courier', name:'FORD COURIER', img:'araba/fordcourier.png', price:950},
+  {id:'fiatdoblo', name:'FİAT DOBLO', img:'araba/fiatdoblo.png', price:950},
+  {id:'transporter', name:'TRANSPORTER', img:'araba/transporter.png', price:1300},
+  {id:'gla200', name:'MERCEDES GLA200', img:'araba/gla200.png', price:1500},
+  {id:'bmw320', name:'BMW 320D', img:'araba/bmw320.png', price:1500},
+  {id:'bmw520', name:'BMW 520D', img:'araba/bmw520.png', price:1800}
+];
+
+const grid = document.getElementById('grid');
+const search = document.getElementById('search');
+const clearBtn = document.getElementById('clear');
+
+/* helper to encode spaces in filenames */
+function safeSrc(path){
+  return path.replace(/ /g, '%20');
+}
+
+function money(n){ return n.toLocaleString('tr-TR') + '₺'; }
+
+function makeCard(car){
+  const art = document.createElement('article');
+  art.className = 'card';
+  art.innerHTML = `
+    <div class="card-top">
+      <div class="badge">${money(car.price)}/gün</div>
+      <div class="media"><img src="${safeSrc(car.img)}" alt="${car.name}" onerror="this.onerror=null;this.src='araba/noimage.png'"></div>
+    </div>
+    <div class="body">
+      <div>
+        <div class="title">${car.name}</div>
+        <div class="meta">Otomatik • Dizel</div>
+      </div>
+      <div class="actions">
+        <a class="link-wa" href="https://wa.me/905545672275?text=${encodeURIComponent('Merhaba, '+car.name+' hakkında bilgi almak istiyorum.')}" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="link-call" href="tel:+905545672275">Hemen Ara</a>
+      </div>
+    </div>
+  `;
+  return art;
+}
+
+function render(list){
+  grid.innerHTML = '';
+  list.forEach(c => grid.appendChild(makeCard(c)));
+}
+render(cars);
+
+/* search */
+function apply(){
+  const q = (search.value||'').trim().toLowerCase();
+  if(!q){ render(cars); return; }
+  const out = cars.filter(c => c.name.toLowerCase().includes(q));
+  render(out);
+}
+search.addEventListener('input', apply);
+clearBtn.addEventListener('click', ()=>{ search.value=''; apply(); });
+
+/* keyboard shortcut to focus search */
+document.addEventListener('keydown', function(e){
+  if(e.key === '/' && document.activeElement !== search){ e.preventDefault(); search.focus(); }
+});
+
+/* video fallback check — if video missing, background still readable due to overlay */
+const bg = document.getElementById('bgVideo');
+bg.addEventListener('error', ()=>{/* noop; overlay handles look */});
+</script>
+</body>
+</html>
