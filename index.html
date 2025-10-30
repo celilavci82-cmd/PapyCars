@@ -1,10 +1,11 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="tr">
 <head>
 <meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>PapyCars — Mobil Öncelikli Rent a Car</title>
-<meta name="description" content="PapyCars — Güvenilir ve mobil dostu araç kiralama. Hemen WhatsApp veya telefonla ulaşın.">
+<meta content="PapyCars — Güvenilir ve mobil dostu araç kiralama. Hemen WhatsApp veya telefonla ulaşın." name="description"/>
 <style>
 :root{
   --bg-1:#071017;
@@ -99,95 +100,95 @@ html,body{height:100%;margin:0;background:linear-gradient(180deg,var(--bg-1),var
 /* Accessibility focus */
 a:focus,button:focus,input:focus{outline:3px solid rgba(255,122,34,0.12);outline-offset:3px}
 </style>
+
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-17686128350"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-17686128350');
+</script>
 </head>
 <body>
 <div class="container" role="main">
-
-  <!-- header -->
-  <header class="header" role="banner">
-    <div class="brand">
-      <div class="brand-badge" aria-hidden="true">PC</div>
-      <div class="brand-text">
-        <div class="title">PapyCars</div>
-        <div class="sub">Rent a Car — Mobil Öncelikli</div>
-      </div>
-    </div>
-    <div class="top-actions" role="navigation" aria-label="Hızlı erişim">
-      <a class="icon-btn" href="#araclar">Araçlar</a>
-      <a class="icon-btn" href="#iletisim">İletişim</a>
-    </div>
-  </header>
-
-  <!-- hero -->
-  <section class="hero" aria-labelledby="heroTitle">
-    <div>
-      <div class="eyebrow">Kiralama • Hızlı • Güvenli</div>
-      <h1 id="heroTitle">PapyCars — Hemen kirala, yola çık</h1>
-      <p class="muted">Mobil kullanıcılar için optimize edilmiş deneyim. WhatsApp veya telefonla hızlı rezervasyon yapabilirsiniz.</p>
-
-      <div class="cta-row">
-        <a class="btn btn-primary" href="tel:+905545672275">Hemen Ara</a>
-        <a id="whatsTop" class="btn btn-ghost" href="https://wa.me/905545672275" target="_blank" rel="noopener">WhatsApp'tan Sor</a>
-      </div>
-
-      <div class="searchbar" role="search">
-        <input id="search" placeholder="Araç ara (örn: CLIO, PASSAT, BMW...)" aria-label="Araç arama">
-        <button id="clear">SIFIRLA</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- grid (cars) -->
-  <section id="araclar" style="margin-top:18px">
-    <div class="grid" id="grid" aria-live="polite"></div>
-  </section>
-
-  <!-- features moved below cars (footer-top) -->
-  <div class="features" id="features" aria-hidden="false" style="margin-top:22px">
-    <div class="feature">
-      <div class="ico">🔧</div>
-      <div>
-        <h4>Bakımlar Düzenli</h4>
-        <p>Tüm araçlarımız yetkili servislerde düzenli olarak bakımdan geçirilir.</p>
-      </div>
-    </div>
-    <div class="feature">
-      <div class="ico">🛡️</div>
-      <div>
-        <h4>Kaskolu Araçlar</h4>
-        <p>Tüm araçlarımız full kasko kapsamındadır, gönül rahatlığıyla sürün.</p>
-      </div>
-    </div>
-    <div class="feature">
-      <div class="ico">✅</div>
-      <div>
-        <h4>Güvenli Sürüş</h4>
-        <p>Sürüş güvenliğine önem veriyoruz; araç kontrolleri düzenli yapılır.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- footer -->
-  <footer id="iletisim" class="footer" role="contentinfo">
-    <div class="contact">
-      <div style="font-weight:900;font-size:15px">PapyCars</div>
-      <div class="muted">Telefon: <strong>+90 554 567 22 75</strong></div>
-      <div class="muted">E-posta: <strong>info@papycars.example</strong></div>
-      <div class="links" style="margin-top:6px">
-        <a href="hakkimizda.html">Hakkımızda</a>
-        <a href="kvkk.html">KVKK</a>
-        <a href="sozlesme.html">Sözleşme</a>
-        <a href="cookies.html">Çerez Politikası</a>
-      </div>
-    </div>
-    <div class="legal">© PapyCars — Tüm hakları saklıdır.</div>
-  </footer>
+<!-- header -->
+<header class="header" role="banner">
+<div class="brand">
+<div aria-hidden="true" class="brand-badge">PC</div>
+<div class="brand-text">
+<div class="title">PapyCars</div>
+<div class="sub">Rent a Car — Mobil Öncelikli</div>
 </div>
-
+</div>
+<div aria-label="Hızlı erişim" class="top-actions" role="navigation">
+<a class="icon-btn" href="#araclar">Araçlar</a>
+<a class="icon-btn" href="#iletisim">İletişim</a>
+</div>
+</header>
+<!-- hero -->
+<section aria-labelledby="heroTitle" class="hero">
+<div>
+<div class="eyebrow">Kiralama • Hızlı • Güvenli</div>
+<h1 id="heroTitle">PapyCars — Hemen kirala, yola çık</h1>
+<p class="muted">Mobil kullanıcılar için optimize edilmiş deneyim. WhatsApp veya telefonla hızlı rezervasyon yapabilirsiniz.</p>
+<div class="cta-row">
+<a class="btn btn-primary" href="tel:+905545672275">Hemen Ara</a>
+<a class="btn btn-ghost" href="https://wa.me/905545672275" id="whatsTop" rel="noopener" target="_blank">WhatsApp'tan Sor</a>
+</div>
+<div class="searchbar" role="search">
+<input aria-label="Araç arama" id="search" placeholder="Araç ara (örn: CLIO, PASSAT, BMW...)"/>
+<button id="clear">SIFIRLA</button>
+</div>
+</div>
+</section>
+<!-- grid (cars) -->
+<section id="araclar" style="margin-top:18px">
+<div aria-live="polite" class="grid" id="grid"></div>
+</section>
+<!-- features moved below cars (footer-top) -->
+<div aria-hidden="false" class="features" id="features" style="margin-top:22px">
+<div class="feature">
+<div class="ico">🔧</div>
+<div>
+<h4>Bakımlar Düzenli</h4>
+<p>Tüm araçlarımız yetkili servislerde düzenli olarak bakımdan geçirilir.</p>
+</div>
+</div>
+<div class="feature">
+<div class="ico">🛡️</div>
+<div>
+<h4>Kaskolu Araçlar</h4>
+<p>Tüm araçlarımız full kasko kapsamındadır, gönül rahatlığıyla sürün.</p>
+</div>
+</div>
+<div class="feature">
+<div class="ico">✅</div>
+<div>
+<h4>Güvenli Sürüş</h4>
+<p>Sürüş güvenliğine önem veriyoruz; araç kontrolleri düzenli yapılır.</p>
+</div>
+</div>
+</div>
+<!-- footer -->
+<footer class="footer" id="iletisim" role="contentinfo">
+<div class="contact">
+<div style="font-weight:900;font-size:15px">PapyCars</div>
+<div class="muted">Telefon: <strong>+90 554 567 22 75</strong></div>
+<div class="muted">E-posta: <strong>info@papycars.example</strong></div>
+<div class="links" style="margin-top:6px">
+<a href="hakkimizda.html">Hakkımızda</a>
+<a href="kvkk.html">KVKK</a>
+<a href="sozlesme.html">Sözleşme</a>
+<a href="cookies.html">Çerez Politikası</a>
+</div>
+</div>
+<div class="legal">© PapyCars — Tüm hakları saklıdır.</div>
+</footer>
+</div>
 <!-- fixed CTA buttons (touch-sized) -->
-<a class="fixed-call" href="tel:+905545672275" aria-label="Hemen ara">HEMEN ARA</a>
-<a class="fixed-wa" id="fixedWhats" href="https://wa.me/905545672275" target="_blank" rel="noopener" aria-label="WhatsApp">WHATSAPP</a>
-
+<a aria-label="Hemen ara" class="fixed-call" href="tel:+905545672275">HEMEN ARA</a>
+<a aria-label="WhatsApp" class="fixed-wa" href="https://wa.me/905545672275" id="fixedWhats" rel="noopener" target="_blank">WHATSAPP</a>
 <script>
 /* --- Data (use same filenames as in araba/ folder) --- */
 const cars = [
@@ -269,6 +270,24 @@ fixedWhats.addEventListener('click', function(e){
 whatsTop.addEventListener('click', function(e){
   // same noop — link navigates
 });
+</script>
+
+<!-- Event snippet for Giden tıklama conversion page -->
+<script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+      'send_to': 'AW-17686128350/UczyCLyg87YbEN7Ns_FB',
+      'value': 1.0,
+      'currency': 'TRY',
+      'event_callback': callback
+  });
+  return false;
+}
 </script>
 </body>
 </html>
