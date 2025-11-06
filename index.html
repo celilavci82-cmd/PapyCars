@@ -102,13 +102,23 @@ a:focus,button:focus,input:focus{outline:3px solid rgba(255,122,34,0.12);outline
 </style>
 
 <!-- Google tag (gtag.js) -->
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-17686128350"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17686128350"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'AW-17686128350');
 </script>
+
+<!-- Event snippet for Giden tıklama conversion page -->
+<script>
+  gtag('event', 'conversion', {
+      'send_to': 'AW-17686128350/UczyCLyg87YbEN7Ns_FB',
+      'value': 1.0,
+      'currency': 'TRY'
+  });
+</script>
+
 </head>
 <body>
 <div class="container" role="main">
@@ -186,11 +196,10 @@ a:focus,button:focus,input:focus{outline:3px solid rgba(255,122,34,0.12);outline
 <div class="legal">© PapyCars — Tüm hakları saklıdır.</div>
 </footer>
 </div>
-<!-- fixed CTA buttons (touch-sized) -->
+<!-- fixed CTA buttons -->
 <a aria-label="Hemen ara" class="fixed-call" href="tel:+905545672275">HEMEN ARA</a>
 <a aria-label="WhatsApp" class="fixed-wa" href="https://wa.me/905545672275" id="fixedWhats" rel="noopener" target="_blank">WHATSAPP</a>
 <script>
-/* --- Data (use same filenames as in araba/ folder) --- */
 const cars = [
   {id:'clio', name:'RENAULT CİLO', img:'araba/clio.png', price:850},
   {id:'egea', name:'FİAT EGEA', img:'araba/egea.png', price:900},
@@ -209,21 +218,17 @@ const cars = [
   {id:'bmw320', name:'BMW 320D', img:'araba/bmw320.png', price:1500},
   {id:'bmw520', name:'BMW 520D', img:'araba/bmw520.png', price:1800}
 ];
-
-/* helpers */
-const grid = document.getElementById('grid');
-const search = document.getElementById('search');
-const clearBtn = document.getElementById('clear');
-const fixedWhats = document.getElementById('fixedWhats');
-const whatsTop = document.getElementById('whatsTop');
-
-function safeSrc(path){ return path.replace(/ /g,'%20'); }
-function money(n){ return n.toLocaleString('tr-TR') + '₺ / gün'; }
-
+const grid=document.getElementById('grid');
+const search=document.getElementById('search');
+const clearBtn=document.getElementById('clear');
+const fixedWhats=document.getElementById('fixedWhats');
+const whatsTop=document.getElementById('whatsTop');
+function safeSrc(path){return path.replace(/ /g,'%20');}
+function money(n){return n.toLocaleString('tr-TR')+'₺ / gün';}
 function makeCard(car){
-  const el = document.createElement('article');
-  el.className = 'card';
-  el.innerHTML = `
+  const el=document.createElement('article');
+  el.className='card';
+  el.innerHTML=`
     <div class="media"><img src="${safeSrc(car.img)}" alt="${car.name}" onerror="this.onerror=null;this.src='araba/noimage.png'"></div>
     <div class="body">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">
@@ -241,53 +246,19 @@ function makeCard(car){
   `;
   return el;
 }
-
-function render(list){
-  grid.innerHTML = '';
-  list.forEach(c => grid.appendChild(makeCard(c)));
-}
+function render(list){grid.innerHTML='';list.forEach(c=>grid.appendChild(makeCard(c)));}
 render(cars);
-
-/* search */
 function apply(){
-  const q = (search.value||'').trim().toLowerCase();
-  if(!q){ render(cars); return; }
-  const out = cars.filter(c => c.name.toLowerCase().includes(q));
+  const q=(search.value||'').trim().toLowerCase();
+  if(!q){render(cars);return;}
+  const out=cars.filter(c=>c.name.toLowerCase().includes(q));
   render(out);
 }
-search.addEventListener('input', apply);
-clearBtn.addEventListener('click', ()=>{ search.value=''; apply(); });
-
-/* keyboard shortcut for search */
-document.addEventListener('keydown', function(e){
-  if(e.key === '/' && document.activeElement !== search){ e.preventDefault(); search.focus(); }
+search.addEventListener('input',apply);
+clearBtn.addEventListener('click',()=>{search.value='';apply();});
+document.addEventListener('keydown',function(e){
+  if(e.key==='/'&&document.activeElement!==search){e.preventDefault();search.focus();}
 });
-
-/* improve WA link on mobile if user wants prefilled message (keeps both top and fixed consistent) */
-fixedWhats.addEventListener('click', function(e){
-  // nothing special — link already opens WhatsApp; keep for analytics later if needed
-});
-whatsTop.addEventListener('click', function(e){
-  // same noop — link navigates
-});
-</script>
-
-<!-- Event snippet for Giden tıklama conversion page -->
-<script>
-function gtag_report_conversion(url) {
-  var callback = function () {
-    if (typeof(url) != 'undefined') {
-      window.location = url;
-    }
-  };
-  gtag('event', 'conversion', {
-      'send_to': 'AW-17686128350/UczyCLyg87YbEN7Ns_FB',
-      'value': 1.0,
-      'currency': 'TRY',
-      'event_callback': callback
-  });
-  return false;
-}
 </script>
 </body>
 </html>
